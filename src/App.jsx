@@ -18,7 +18,7 @@ const App = () => {
     blogService.getAll().then(blogs =>
       setBlogs(blogs.sort((a, b) => b.likes - a.likes))
     )
-  }, [])
+  }, [blogs])
 
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const App = () => {
   }, [])
 
   //console.log(blogs[blogs.length - 1])
+  //console.log('user =>', user)
 
   const handleLogin = async (userInput) => {
     try {
@@ -75,10 +76,21 @@ const App = () => {
     refBlogForm.current.toggleTheVisibility()
   }
 
+  //console.log(blogs[blogs.length - 1])
+
   const updateBlog = async (obj, id) => {
     const response = await blogService.update(obj, id)
     //console.log(response)
     setBlogs(blogs.map(blog => blog.id !== id ? blog : response))
+  }
+
+
+  const deleteBlog = async (id) => {
+    const blog = blogs.find(blog => blog.id === id)
+    if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
+      await blogService.remove(id)
+      setBlogs(blogs.filter(blog => blog.id !== id))
+    }
   }
 
 
@@ -119,7 +131,11 @@ const App = () => {
       </div>}
       <div>
         {blogs.map(blog =>
-          <Blog key={blog.id} blog={blog} updateFunc={updateBlog} />
+          <Blog key={blog.id}
+            blog={blog}
+            updateFunc={updateBlog}
+            deleteFunc={() => deleteBlog(blog.id)}
+            creator={user} />
         )}
       </div>
       <br />

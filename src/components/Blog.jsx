@@ -1,11 +1,26 @@
 import { useState } from "react"
 
-const Blog = ({ blog, updateFunc }) => {
+const Blog = ({ blog, updateFunc, deleteFunc, creator }) => {
 
   const [complete, setComplete] = useState(false)
 
   const toggleComplete = () => {
     setComplete(!complete)
+  }
+
+  const deleteButton = () => {
+    if (blog.user.length === 0) {
+      return null
+    } else {
+      return (
+        <div>
+          {creator.username === blog.user[0].username &&
+            <div>
+              <button onClick={deleteFunc}>remove</button>
+            </div>}
+        </div>
+      )
+    }
   }
 
 
@@ -18,16 +33,18 @@ const Blog = ({ blog, updateFunc }) => {
   const fullDetail = () => {
     return (
       <div>
-        {blog.title}
+        {blog.title} by {blog.author}
         <br />
         <a href={blog.url}>{blog.url}</a>
         <br />
         likes {blog.likes}
         <button onClick={handleUpdating}>like</button>
         <br />
-        {blog.author}
+        {blog.user[0].name}
         <br />
         <button onClick={toggleComplete}>hide</button>
+        <br />
+        {deleteButton()}
       </div>
     )
   }
@@ -35,7 +52,7 @@ const Blog = ({ blog, updateFunc }) => {
   const summaryBlog = () => {
     return (
       <div>
-        {blog.title} {blog.author}
+        {blog.title} by {blog.author}
         <button onClick={toggleComplete}>show</button>
       </div>
     )
