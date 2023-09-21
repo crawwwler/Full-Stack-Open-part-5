@@ -4,6 +4,8 @@ const Blog = ({ blog, updateFunc, deleteFunc, creator }) => {
 
   const [complete, setComplete] = useState(false)
 
+  //console.log('the blog obj => ', blog)
+
   const toggleComplete = () => {
     setComplete(!complete)
   }
@@ -34,15 +36,14 @@ const Blog = ({ blog, updateFunc, deleteFunc, creator }) => {
     return (
       <div>
         {blog.title} by {blog.author}
+        <button onClick={toggleComplete}>hide</button>
         <br />
         <a href={blog.url}>{blog.url}</a>
         <br />
         likes {blog.likes}
         <button onClick={handleUpdating}>like</button>
         <br />
-        {blog.user[0].name}
-        <br />
-        <button onClick={toggleComplete}>hide</button>
+        {blog.user.length === 0 ? 'name is not defined' : blog.user[0].name}
         <br />
         {deleteButton()}
       </div>

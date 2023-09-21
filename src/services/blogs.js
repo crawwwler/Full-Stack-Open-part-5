@@ -23,10 +23,7 @@ const create = async (objtp) => {
 
 
 const update = async (objtp, id) => {
-  const config = {
-    headers: { Authorization: token }
-  }
-  const response = await axios.put(`${baseUrl}/${id}`, objtp, config)
+  const response = await axios.put(`${baseUrl}/${id}`, objtp)
   return response.data
 }
 
