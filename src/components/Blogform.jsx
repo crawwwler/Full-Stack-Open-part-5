@@ -31,15 +31,17 @@ const Blogform = ({ createFunc }) => {
                         type="text"
                         value={title}
                         onChange={({ target }) => setTitle(target.value)}
+                        placeholder='title'
                     />
                 </div>
                 <div>
                     author:
                     <input
-                        id="input"
+                        id="author"
                         type="text"
                         value={author}
                         onChange={({ target }) => setAuthor(target.value)}
+                        placeholder='author'
                     />
                 </div>
                 <div>
@@ -49,6 +51,7 @@ const Blogform = ({ createFunc }) => {
                         type="text"
                         value={url}
                         onChange={({ target }) => setUrl(target.value)}
+                        placeholder='url'
                     />
                 </div>
                 <button id="subbutton" type="submit">create</button>
