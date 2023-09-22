@@ -30,12 +30,11 @@ const App = () => {
         }
     }, [])
 
-    //console.log(blogs[blogs.length - 1])
-    //console.log('user =>', user)
 
     const handleLogin = async (userInput) => {
         try {
             const userX = await loginserv.login(userInput)
+            console.log(userX)
             window.localStorage.setItem('loggedUser', JSON.stringify(userX))
             setUser(userX)
             blogService.setToken(userX.token)
@@ -76,7 +75,6 @@ const App = () => {
         refBlogForm.current.toggleTheVisibility()
     }
 
-    //console.log(blogs[blogs.length - 1])
 
     const updateBlog = async (obj, id) => {
         const response = await blogService.update(obj, id)

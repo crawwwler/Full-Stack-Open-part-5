@@ -18,7 +18,7 @@ const Blog = ({ blog, updateFunc, deleteFunc, creator }) => {
                 <div>
                     {creator.username === blog.user[0].username &&
                         <div>
-                            <button onClick={deleteFunc}>remove</button>
+                            <button id='delbut' onClick={deleteFunc}>remove</button>
                         </div>}
                 </div>
             )
@@ -41,7 +41,7 @@ const Blog = ({ blog, updateFunc, deleteFunc, creator }) => {
                 <a href={blog.url}>{blog.url}</a>
                 <br />
                 likes {blog.likes}
-                <button onClick={handleUpdating}>like</button>
+                <button id='likebut' onClick={handleUpdating}>like</button>
                 <br />
                 {blog.user.length === 0 ? 'name is not defined' : blog.user[0].name}
                 <br />

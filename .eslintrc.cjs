@@ -1,50 +1,51 @@
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2020: true,
-    'jest/globals': true,
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-  ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh', 'jest'],
-  rules: {
-    'indent': [
-      'error',
-      4, // Indent with 4 spaces or one tab
+    root: true,
+    env: {
+        browser: true,
+        es2020: true,
+        'jest/globals': true,
+        'cypress/globals': true
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'plugin:react-hooks/recommended',
     ],
-    'linebreak-style': [
-      'error',
-      'windows', // Line endings for Windows
-    ],
-    'quotes': [
-      'error',
-      'single', // Allow both single and double quotes
-    ],
-    'semi': [
-      'error',
-      'never',
-    ],
-    'eqeqeq': 'error',
-    'no-trailing-spaces': 'error',
-    'object-curly-spacing': [
-      'error',
-      'always',
-    ],
-    'arrow-spacing': [
-      'error',
-      { 'before': true, 'after': true },
-    ],
-    'no-console': 0,
-    'react/prop-types': 0,
-    'react/react-in-jsx-scope': 'off',
-    'no-unused-vars': 0,
-  },
+    ignorePatterns: ['dist', '.eslintrc.cjs'],
+    parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+    settings: { react: { version: '18.2' } },
+    plugins: ['react-refresh', 'jest', 'cypress'],
+    rules: {
+        'indent': [
+            'error',
+            4, // Indent with 4 spaces or one tab
+        ],
+        'linebreak-style': [
+            'error',
+            'windows', // Line endings for Windows
+        ],
+        'quotes': [
+            'error',
+            'single', // Allow both single and double quotes
+        ],
+        'semi': [
+            'error',
+            'never',
+        ],
+        'eqeqeq': 'error',
+        'no-trailing-spaces': 'error',
+        'object-curly-spacing': [
+            'error',
+            'always',
+        ],
+        'arrow-spacing': [
+            'error',
+            { 'before': true, 'after': true },
+        ],
+        'no-console': 0,
+        'react/prop-types': 0,
+        'react/react-in-jsx-scope': 'off',
+        'no-unused-vars': 0,
+    },
 };
