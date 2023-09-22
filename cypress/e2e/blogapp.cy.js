@@ -83,5 +83,17 @@ describe('blogapp tests', function () {
                 cy.contains('something by someone').parent().contains('remove').should('not.exist')
             })
         })
+
+        it('blogs shown in order', function () {
+            cy.createBlog({ title: '1st blog', author: 'first', url: '1.com', likes: 10 })
+            cy.createBlog({ title: '2nd blog', author: 'second', url: '2.com', likes: 8 })
+            cy.createBlog({ title: '3rd blog', author: 'third', url: '3.com', likes: 4 })
+            cy.createBlog({ title: '4th blog', author: 'fourth', url: '4.com', likes: 1 })
+
+            cy.get('.blog').eq(0).should('contain', '1st blog')
+            cy.get('.blog').eq(1).should('contain', '2nd blog')
+            cy.get('.blog').eq(2).should('contain', '3rd blog')
+            cy.get('.blog').eq(3).should('contain', '4th blog')
+        })
     })
 })
