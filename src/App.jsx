@@ -34,7 +34,6 @@ const App = () => {
     const handleLogin = async (userInput) => {
         try {
             const userX = await loginserv.login(userInput)
-            console.log(userX)
             window.localStorage.setItem('loggedUser', JSON.stringify(userX))
             setUser(userX)
             blogService.setToken(userX.token)
@@ -78,7 +77,6 @@ const App = () => {
 
     const updateBlog = async (obj, id) => {
         const response = await blogService.update(obj, id)
-        //console.log(response)
         setBlogs(blogs.map(blog => blog.id !== id ? blog : response))
     }
 

@@ -4,7 +4,6 @@ const Blog = ({ blog, updateFunc, deleteFunc, creator }) => {
 
     const [complete, setComplete] = useState(false)
 
-    //console.log('the blog obj => ', blog)
 
     const toggleComplete = () => {
         setComplete(!complete)
